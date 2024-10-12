@@ -14,7 +14,7 @@ public static int binary2decimal(int[] binaryArray) {
 }
 
     public static void main(String[] args) {
-        int[] binaryArray = {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; // Beispiel: Binärzahl 1011
+        int[] binaryArray = {1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0}; // Beispiel: Binärzahl 1011
         int decimal = binary2decimal(binaryArray);
         System.out.println("Der Dezimalwert ist: " + decimal); // Ausgabe: 11
     }
