@@ -1,5 +1,6 @@
+import java.util.Scanner;
 public class IntroductionExercise {
-//  Implementierung von ChatGPT nach Hinweis auf Fehlerfälle
+//  Implementierung von ChatGPT nach Hinweis auf Fehlerfälle2
 public static int binary2decimal(int[] binaryArray) {
     if (!isValidBinaryArray(binaryArray)) {
         throw new IllegalArgumentException("Das Array enthält ungültige Zeichen. Nur 0 und 1 sind erlaubt.");
@@ -27,13 +28,25 @@ public static int binary2decimal(int[] binaryArray) {
     }
 
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Geben Sie eine Binärzahl ein (nur 0 und 1): ");
+        String input = scanner.nextLine();
+
+        // Überprüfung, ob die Eingabe nur aus 0 und 1 besteht
+        if (!input.matches("[01]+")) {
+            System.out.println("Ungültige Eingabe! Nur 0 und 1 sind erlaubt.");
+            return;
+        }
+
+        // Umwandlung in ein Integer-Array
+        int[] binaryArray = new int[input.length()];
+        for (int i = 0; i < input.length(); i++) {
+            binaryArray[i] = Character.getNumericValue(input.charAt(i));
+        }
+
         try {
-            int[] binaryArray = {1, 0, 1, 1}; // Gültige Binärzahl
             int decimal = binary2decimal(binaryArray);
             System.out.println("Der Dezimalwert ist: " + decimal);
-
-            int[] invalidArray = {1, a, 1, 1}; // Ungültige Binärzahl
-            decimal = binary2decimal(invalidArray); // Wirft eine Ausnahme
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
