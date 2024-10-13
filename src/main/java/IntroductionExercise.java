@@ -29,12 +29,12 @@ public static int binary2decimal(int[] binaryArray) {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Geben Sie eine Binärzahl ein (nur 0 und 1): ");
+        System.out.print("Geben Sie eine Binärzahl ein (maximal 31 Bits, nur 0 und 1): ");
         String input = scanner.nextLine();
 
-        // Überprüfung, ob die Eingabe nur aus 0 und 1 besteht
-        if (!input.matches("[01]+")) {
-            System.out.println("Ungültige Eingabe! Nur 0 und 1 sind erlaubt.");
+        // Überprüfung, ob die Eingabe nur aus 0 und 1 besteht und maximal 31 Bits lang ist
+        if (!input.matches("[01]+") || input.length() > 31) {
+            System.out.println("Ungültige Eingabe! Nur 0 und 1 sind erlaubt, und die Binärzahl darf maximal 31 Bits lang sein.");
             return;
         }
 
@@ -50,5 +50,6 @@ public static int binary2decimal(int[] binaryArray) {
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
+
     }
 }
