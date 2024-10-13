@@ -1,6 +1,10 @@
 public class IntroductionExercise {
-//  Implementierung von ChatGPT
+//  Implementierung von ChatGPT nach Hinweis auf Fehlerfälle
 public static int binary2decimal(int[] binaryArray) {
+    if (!isValidBinaryArray(binaryArray)) {
+        throw new IllegalArgumentException("Das Array enthält ungültige Zeichen. Nur 0 und 1 sind erlaubt.");
+    }
+
     int decimalValue = 0;
     int length = binaryArray.length;
 
@@ -13,9 +17,25 @@ public static int binary2decimal(int[] binaryArray) {
     return decimalValue;
 }
 
+    private static boolean isValidBinaryArray(int[] binaryArray) {
+        for (int element : binaryArray) {
+            if (element != 0 && element != 1) {
+                return false; // Falscher Wert im Array
+            }
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
-        int[] binaryArray = {1,0,1,1}; // Beispiel: Binärzahl 1011
-        int decimal = binary2decimal(binaryArray);
-        System.out.println("Der Dezimalwert ist: " + decimal); // Ausgabe: 11
+        try {
+            int[] binaryArray = {1, 0, 1, 1}; // Gültige Binärzahl
+            int decimal = binary2decimal(binaryArray);
+            System.out.println("Der Dezimalwert ist: " + decimal);
+
+            int[] invalidArray = {1, 2, 1, 1}; // Ungültige Binärzahl
+            decimal = binary2decimal(invalidArray); // Wirft eine Ausnahme
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
