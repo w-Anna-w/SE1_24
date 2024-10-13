@@ -32,7 +32,7 @@ public static int binary2decimal(int[] binaryArray) {
             int decimal = binary2decimal(binaryArray);
             System.out.println("Der Dezimalwert ist: " + decimal);
 
-            int[] invalidArray = {1, 2, 1, 1}; // Ungültige Binärzahl
+            int[] invalidArray = {1, a, 1, 1}; // Ungültige Binärzahl
             decimal = binary2decimal(invalidArray); // Wirft eine Ausnahme
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
